@@ -87,7 +87,9 @@ class ParamGrid:
         '''
 
         try:
-            out = arange(start, end, (end - start) / n, dtype=float)
+            step = (end - start) / (n - 1)
+            epsilon = step * 0.1
+            out = arange(start, end + epsilon, step, dtype=float)
         # this is for python2
         except ZeroDivisionError:
             out = arange(start, end, (end - start) / float(n), dtype=float)
